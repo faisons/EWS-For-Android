@@ -60,7 +60,8 @@ final class EndDateRecurrenceRange extends RecurrenceRange {
 	 */
 	protected void setupRecurrence(Recurrence recurrence) throws Exception {
 		super.setupRecurrence(recurrence);
-		this.endDate = recurrence.getEndDate();
+		//this.endDate = recurrence.getEndDate();
+		recurrence.setEndDate(this.endDate);
 	}
 
 	/**
