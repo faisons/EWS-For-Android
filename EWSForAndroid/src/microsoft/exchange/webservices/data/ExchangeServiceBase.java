@@ -585,8 +585,14 @@ public abstract class ExchangeServiceBase {
         if (value == null || value.isEmpty()) {
             return null;
         } else {
-        	DateFormat df = new SimpleDateFormat("yyyy-MM-dd'Z'");
-			return df.parse(value);
+        	try {
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd'Z'");
+    			return df.parse(value);
+            } catch(ParseException e) {
+                value = value.replaceAll("([+-])(\\d\\d):(\\d\\d)$", "$1$2$3");
+                DateFormat df = new SimpleDateFormat("yyyy-MM-ddZ");
+                return df.parse(value);
+            }
         }
     }
     

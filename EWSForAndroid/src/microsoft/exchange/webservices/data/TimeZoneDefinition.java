@@ -82,7 +82,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 	/**
 	 * Initializes a new instance of the TimeZoneDefinition class.
 	 */
-	protected TimeZoneDefinition() {
+	public TimeZoneDefinition() {
 		super();
 	}
 
@@ -296,42 +296,42 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 		// The definition must have at least one period, one transition group
 		// and one transition,
 		// and there must be as many transitions as there are transition groups.
-		if (this.periods.size() < 1 || this.transitions.size() < 1
-				|| this.transitionGroups.size() < 1
-				|| this.transitionGroups.size() != this.transitions.size()) {
-			throw new ServiceLocalException(
-					Strings.InvalidOrUnsupportedTimeZoneDefinition);
-		}
-
-		// The first transition must be of type TimeZoneTransition.
-		if (this.transitions.get(0).getClass() != TimeZoneTransition.class) {
-			throw new ServiceLocalException(
-					Strings.InvalidOrUnsupportedTimeZoneDefinition);
-		}
-
-		// All transitions must be to transition groups and be either
-		// TimeZoneTransition or
-		// AbsoluteDateTransition instances.
-		for (TimeZoneTransition transition : this.transitions) {
-			Class<?> transitionType = transition.getClass();
-
-			if (transitionType != TimeZoneTransition.class
-					&& transitionType != AbsoluteDateTransition.class) {
-				throw new ServiceLocalException(
-						Strings.InvalidOrUnsupportedTimeZoneDefinition);
-			}
-
-			if (transition.getTargetGroup() == null) {
-				throw new ServiceLocalException(
-						Strings.InvalidOrUnsupportedTimeZoneDefinition);
-			}
-		}
-
-		// All transition groups must be valid.
-		for (TimeZoneTransitionGroup transitionGroup : this.transitionGroups
-				.values()) {
-			transitionGroup.validate();
-		}
+//		if (this.periods.size() < 1 || this.transitions.size() < 1
+//				|| this.transitionGroups.size() < 1
+//				|| this.transitionGroups.size() != this.transitions.size()) {
+//			throw new ServiceLocalException(
+//					Strings.InvalidOrUnsupportedTimeZoneDefinition);
+//		}
+//
+//		// The first transition must be of type TimeZoneTransition.
+//		if (this.transitions.get(0).getClass() != TimeZoneTransition.class) {
+//			throw new ServiceLocalException(
+//					Strings.InvalidOrUnsupportedTimeZoneDefinition);
+//		}
+//
+//		// All transitions must be to transition groups and be either
+//		// TimeZoneTransition or
+//		// AbsoluteDateTransition instances.
+//		for (TimeZoneTransition transition : this.transitions) {
+//			Class<?> transitionType = transition.getClass();
+//
+//			if (transitionType != TimeZoneTransition.class
+//					&& transitionType != AbsoluteDateTransition.class) {
+//				throw new ServiceLocalException(
+//						Strings.InvalidOrUnsupportedTimeZoneDefinition);
+//			}
+//
+//			if (transition.getTargetGroup() == null) {
+//				throw new ServiceLocalException(
+//						Strings.InvalidOrUnsupportedTimeZoneDefinition);
+//			}
+//		}
+//
+//		// All transition groups must be valid.
+//		for (TimeZoneTransitionGroup transitionGroup : this.transitionGroups
+//				.values()) {
+//			transitionGroup.validate();
+//		}
 	}
 
 	/**
@@ -349,7 +349,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 	 * @param name
 	 *            the new name
 	 */
-	protected void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -368,7 +368,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 	 * @param id
 	 *            the new id
 	 */
-	protected void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
